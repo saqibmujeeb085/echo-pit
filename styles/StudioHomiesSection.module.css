@@ -1,0 +1,159 @@
+.container {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* -------------------------------------------------------
+   Portrait wrapper
+------------------------------------------------------- */
+
+.homieContainer {
+  position: relative;
+}
+
+/* -------------------------------------------------------
+   Three animated outline layers
+------------------------------------------------------- */
+
+.outline > div {
+  position: absolute;
+  inset: 0;
+
+  border: 1px solid #ffffff;
+
+  opacity: 0;
+
+  transition:
+    opacity 0.3s cubic-bezier(0.4, 0, 1, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 1, 1),
+    border-radius 0.3s cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* -------------------------------------------------------
+   Portrait media frame
+------------------------------------------------------- */
+
+.thumbnail {
+  position: relative;
+  z-index: 1;
+
+  overflow: hidden;
+
+  aspect-ratio: 1 / 1;
+
+  background-color: #181818;
+}
+
+.image,
+.video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image {
+  opacity: 1;
+}
+
+.video {
+  opacity: 0;
+}
+
+/* -------------------------------------------------------
+   Image-to-video hover crossfade
+------------------------------------------------------- */
+
+.homieContainer:hover .image {
+  opacity: 0;
+}
+
+.homieContainer:hover .video {
+  opacity: 1;
+}
+
+/* -------------------------------------------------------
+   Mobile portrait shapes
+------------------------------------------------------- */
+
+.roundedMobile .thumbnail,
+.roundedMobile .outline > div {
+  border-radius: 9999px;
+}
+
+.squareMobile .thumbnail,
+.squareMobile .outline > div {
+  border-radius: 0;
+}
+
+/* -------------------------------------------------------
+   Tablet
+------------------------------------------------------- */
+
+@media (min-width: 768px) {
+  .container {
+    padding-top: 3.5rem;
+    padding-bottom: 3.75rem;
+  }
+
+  /**
+   * Desktop shapes replace the mobile shape pattern
+   * once the five-column layout becomes active.
+   */
+  .roundedDesktop .thumbnail,
+  .roundedDesktop .outline > div {
+    border-radius: 9999px;
+  }
+
+  .squareDesktop .thumbnail,
+  .squareDesktop .outline > div {
+    border-radius: 0;
+  }
+}
+
+/* -------------------------------------------------------
+   Laptop
+------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+  .container {
+    padding-top: 5.5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* -------------------------------------------------------
+   Large desktop
+------------------------------------------------------- */
+
+@media (min-width: 1280px) {
+  .container {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+  }
+
+  /**
+   * Show the three offset outline layers only on
+   * large desktop screens, matching the original CSS.
+   */
+  .homieContainer:hover .outline > div {
+    opacity: 1;
+  }
+
+  .homieContainer:hover .outline > div:first-child {
+    transform: translate(5%, 5%);
+  }
+
+  .homieContainer:hover .outline > div:nth-child(2) {
+    transform: translate(10%, 10%);
+  }
+
+  .homieContainer:hover .outline > div:nth-child(3) {
+    transform: translate(15%, 15%);
+  }
+}

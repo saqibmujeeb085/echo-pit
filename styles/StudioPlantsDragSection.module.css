@@ -1,0 +1,385 @@
+/* -------------------------------------------------------------------------- */
+/*                                  Section                                   */
+/* -------------------------------------------------------------------------- */
+
+.section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  color: #ffffff;
+  background-color: #0d0d0d;
+}
+
+.sectionInner {
+  position: relative;
+}
+
+.scrollContainer {
+  display: flex;
+
+  overflow: auto;
+
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+
+  cursor: grab;
+
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+
+  user-select: none;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.isGrabbing {
+  cursor: grabbing;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            Sticky heading                                  */
+/* -------------------------------------------------------------------------- */
+
+.stickyHeading {
+  position: sticky;
+
+  left: 0;
+
+  flex-shrink: 0;
+
+  width: 50%;
+
+  white-space: pre;
+
+  user-select: none;
+
+  will-change: opacity;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+}
+
+.title {
+  position: relative;
+
+  margin-top: 0.25rem;
+
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+
+/**
+ * Bullet before the first title line.
+ */
+.title::before {
+  position: absolute;
+
+  right: 100%;
+  left: auto;
+
+  padding-right: 0.25rem;
+
+  content: attr(data-index);
+
+  text-align: right;
+
+  font-size: 1.125rem;
+  line-height: inherit;
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                         3D text entrance                                   */
+/* -------------------------------------------------------------------------- */
+
+.textRotate {
+  --rotate-hide-y: 100%;
+  --rotate-hide-x: -40deg;
+
+  visibility: hidden;
+
+  opacity: 0;
+
+  transform: translateY(var(--rotate-hide-y)) rotateX(var(--rotate-hide-x));
+
+  transform-origin: center top;
+  transform-style: preserve-3d;
+
+  backface-visibility: hidden;
+
+  transition: all 1s;
+}
+
+.isVisible .textRotate {
+  visibility: visible;
+
+  opacity: 1;
+
+  transform: translateY(0) rotateX(0);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Plant cards                                 */
+/* -------------------------------------------------------------------------- */
+
+.dragItem {
+  flex-shrink: 0;
+
+  user-select: none;
+}
+
+.plantImage {
+  width: 11.25rem;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: contain;
+
+  filter: grayscale(100%);
+
+  transition:
+    opacity 0.7s ease,
+    filter 0.7s ease,
+    color 0.7s ease;
+}
+
+.plantTitle {
+  margin-top: 0.5rem;
+
+  opacity: 0;
+
+  text-align: center;
+
+  font-size: 0.75rem;
+  line-height: 1rem;
+
+  transition:
+    opacity 0.7s ease,
+    filter 0.7s ease,
+    color 0.7s ease;
+}
+
+.dragItem:hover .plantImage,
+.dragItem:active .plantImage {
+  filter: grayscale(0);
+}
+
+.dragItem:hover .plantTitle,
+.dragItem:active .plantTitle {
+  opacity: 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             Bottom baseline                                */
+/* -------------------------------------------------------------------------- */
+
+.baselineContainer {
+  position: absolute;
+
+  bottom: 1.5rem;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.baseline {
+  width: 100vw;
+
+  border-bottom: 1px solid #ffffff;
+
+  will-change: transform;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Tablet                                    */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 4.125rem;
+    padding-bottom: 4.125rem;
+  }
+
+  .scrollContainer,
+  .baselineContainer {
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .title {
+    margin-top: 0.75rem;
+
+    font-size: 3.5rem;
+    line-height: 4rem;
+  }
+
+  .title::before {
+    padding-right: 0.75rem;
+
+    font-size: 1.5rem;
+    line-height: inherit;
+  }
+
+  .plantImage {
+    width: 14.8125rem;
+  }
+
+  .plantTitle {
+    margin-top: 1.5rem;
+
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .baselineContainer {
+    bottom: 3rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Laptop                                    */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .scrollContainer,
+  .baselineContainer {
+    padding-right: 5rem;
+    padding-left: 5rem;
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .title {
+    margin-top: 1rem;
+
+    font-size: 4.5rem;
+    line-height: 5rem;
+  }
+
+  .title::before {
+    padding-right: 1rem;
+
+    font-size: 2rem;
+    line-height: inherit;
+  }
+
+  .plantImage {
+    width: 19.75rem;
+  }
+
+  .plantTitle {
+    margin-top: 2rem;
+
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .baselineContainer {
+    bottom: 3.5rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Large desktop                                 */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 1280px) {
+  .section {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+  }
+
+  .scrollContainer,
+  .baselineContainer {
+    padding-right: 8.33333333333rem;
+    padding-left: 8.33333333333rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .title {
+    margin-top: 1.5rem;
+
+    font-size: 7rem;
+    line-height: 7.5rem;
+  }
+
+  .title::before {
+    right: auto;
+    left: -6rem;
+
+    padding-right: 0;
+
+    font-size: 2rem;
+    line-height: inherit;
+  }
+
+  .plantImage {
+    width: 29.25rem;
+  }
+
+  .plantTitle {
+    margin-top: 3rem;
+  }
+
+  .baselineContainer {
+    bottom: 4.5rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Mobile                                    */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  /**
+   * The source explicitly keeps images in color and labels
+   * visible below the tablet breakpoint.
+   */
+  .plantImage {
+    filter: grayscale(0);
+  }
+
+  .plantTitle {
+    opacity: 1;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                          Wide desktop container                            */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 1440px) {
+  .scrollContainer,
+  .baselineContainer {
+    padding-right: 12.5vw;
+    padding-left: 12.5vw;
+  }
+}

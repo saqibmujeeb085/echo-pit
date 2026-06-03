@@ -1,0 +1,460 @@
+/* -------------------------------------------------------------------------- */
+/*                                  Section                                   */
+/* -------------------------------------------------------------------------- */
+
+.section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  color: #ffffff;
+  background-color: #0d0d0d;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             Heading typography                             */
+/* -------------------------------------------------------------------------- */
+
+.titleContainer {
+  display: inline-block;
+
+  perspective: 37.5rem;
+}
+
+.subtitle {
+  display: inline-block;
+
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+}
+
+.title {
+  position: relative;
+
+  display: inline-block;
+
+  margin-top: 0.25rem;
+
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+
+.title::before {
+  position: absolute;
+
+  right: 100%;
+  left: auto;
+
+  padding-right: 0.25rem;
+
+  content: attr(data-index);
+
+  text-align: right;
+
+  font-size: 1.125rem;
+  line-height: inherit;
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                3D reveal                                   */
+/* -------------------------------------------------------------------------- */
+
+.textRotate {
+  visibility: hidden;
+
+  opacity: 0;
+
+  transform: translateY(100%) translateZ(-10px) rotateX(-40deg);
+
+  transform-origin: center top;
+  transform-style: preserve-3d;
+
+  backface-visibility: hidden;
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    visibility 1s ease;
+}
+
+.rotateShow .textRotate {
+  visibility: visible;
+
+  opacity: 1;
+
+  transform: translateY(0) translateZ(0) rotateX(0deg);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            Horizontal scroller                             */
+/* -------------------------------------------------------------------------- */
+
+.galleryOuter {
+  position: relative;
+
+  padding-top: 1.5rem;
+}
+
+.scrollContainer {
+  overflow: auto;
+
+  padding-top: 1rem;
+  padding-bottom: 1.25rem;
+
+  cursor: grab;
+
+  user-select: none;
+
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.isDragging {
+  cursor: grabbing;
+}
+
+.galleryContent {
+  width: max-content;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               First row                                    */
+/* -------------------------------------------------------------------------- */
+
+.topRow {
+  display: flex;
+
+  margin-bottom: 1rem;
+}
+
+.topItem {
+  flex-shrink: 0;
+
+  margin-right: 1.5rem;
+
+  user-select: none;
+}
+
+.topItem:nth-child(even) {
+  margin-top: 1.5rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Travel markers                                */
+/* -------------------------------------------------------------------------- */
+
+.stopRow {
+  display: flex;
+
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.travelStop {
+  --travel-index: 1;
+
+  display: flex;
+  width: calc(var(--travel-index) * 12.0625rem);
+
+  flex-shrink: 0;
+
+  align-items: center;
+}
+
+.stopIcon {
+  display: inline-block;
+
+  width: 1.5rem;
+
+  margin-right: 0.5rem;
+
+  aspect-ratio: 1 / 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Second row                                    */
+/* -------------------------------------------------------------------------- */
+
+.bottomRow {
+  display: flex;
+
+  margin-top: 1rem;
+}
+
+.bottomItem {
+  flex-shrink: 0;
+
+  margin-right: 1.5rem;
+
+  user-select: none;
+}
+
+.bottomItem:nth-child(odd) {
+  margin-top: 1.5rem;
+}
+
+.trailingSpace {
+  flex-shrink: 0;
+
+  padding-right: 12.5vw;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Travel images                                */
+/* -------------------------------------------------------------------------- */
+
+.travelImage {
+  position: relative;
+
+  width: 10.5625rem;
+
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+
+  user-select: none;
+
+  background-color: #343434;
+
+  filter: grayscale(100%);
+
+  will-change: transform;
+
+  transition:
+    opacity 0.7s ease,
+    filter 0.7s ease,
+    color 0.7s ease;
+}
+
+.topItem:hover .travelImage,
+.topItem:active .travelImage,
+.bottomItem:hover .travelImage,
+.bottomItem:active .travelImage {
+  filter: grayscale(0);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Tablet                                    */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 4.125rem;
+    padding-bottom: 4.125rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .title {
+    margin-top: 0.75rem;
+
+    font-size: 3.5rem;
+    line-height: 4rem;
+  }
+
+  .title::before {
+    padding-right: 0.75rem;
+
+    font-size: 1.5rem;
+  }
+
+  .scrollContainer {
+    padding-top: 2.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .topRow {
+    margin-bottom: 0.375rem;
+  }
+
+  .topItem:nth-child(even) {
+    margin-top: 1.875rem;
+  }
+
+  .stopRow {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .travelStop {
+    width: calc(var(--travel-index) * 15.188rem);
+  }
+
+  .stopIcon {
+    width: 3.5rem;
+  }
+
+  .bottomRow {
+    margin-top: 0;
+  }
+
+  .bottomItem {
+    margin-right: 0;
+    margin-left: 1.5rem;
+  }
+
+  .bottomItem:nth-child(odd) {
+    margin-top: 1.3125rem;
+  }
+
+  .travelImage {
+    width: 13.688rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Laptop                                    */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .title {
+    margin-top: 1rem;
+
+    font-size: 4.5rem;
+    line-height: 5rem;
+  }
+
+  .title::before {
+    padding-right: 1rem;
+
+    font-size: 2rem;
+  }
+
+  .scrollContainer {
+    padding-top: 3rem;
+    padding-bottom: 0.375rem;
+  }
+
+  .topRow {
+    margin-bottom: 0.5rem;
+  }
+
+  .topItem:nth-child(even) {
+    margin-top: 2.5rem;
+  }
+
+  .stopRow {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .travelStop {
+    width: calc(var(--travel-index) * 19.75rem);
+  }
+
+  .stopIcon {
+    width: 4.5rem;
+  }
+
+  .bottomItem:nth-child(odd) {
+    margin-top: 2.125rem;
+  }
+
+  .travelImage {
+    width: 18.25rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Large desktop                                 */
+/* -------------------------------------------------------------------------- */
+
+@media (min-width: 1280px) {
+  .section {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .title {
+    margin-top: 1.5rem;
+
+    font-size: 7rem;
+    line-height: 7.5rem;
+  }
+
+  .title::before {
+    right: auto;
+    left: -6rem;
+
+    padding-right: 0;
+
+    font-size: 2rem;
+  }
+
+  .scrollContainer {
+    margin-bottom: -1.25rem;
+
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+  }
+
+  .topRow {
+    margin-bottom: 0.75rem;
+  }
+
+  .topItem {
+    margin-right: 7rem;
+  }
+
+  .topItem:nth-child(even) {
+    margin-top: 3.3125rem;
+  }
+
+  .travelStop {
+    width: calc(var(--travel-index) * 32rem);
+  }
+
+  .bottomRow {
+    margin-top: 1.75rem;
+  }
+
+  .bottomItem {
+    margin-left: 7rem;
+  }
+
+  .bottomItem:nth-child(odd) {
+    margin-top: 2.375rem;
+  }
+
+  .travelImage {
+    width: 25rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Mobile                                    */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  /**
+   * The source explicitly removes grayscale on mobile.
+   */
+  .travelImage {
+    filter: grayscale(0);
+  }
+}
