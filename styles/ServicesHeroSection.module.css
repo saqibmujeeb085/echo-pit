@@ -1,0 +1,261 @@
+.wrapper {
+  padding-bottom: 2.5rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding-top: 5.25rem;
+}
+
+/* Main heading */
+.heading {
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+  user-select: none;
+
+  font-size: 5rem;
+  line-height: 5.75rem;
+  font-weight: 500;
+
+  perspective: 37.5rem;
+}
+
+.heading > * {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+
+/* 3D entrance transition */
+.reveal3d {
+  transform-origin: center center;
+
+  opacity: 1;
+
+  transition:
+    transform 0.9s,
+    opacity 0.75s 0.2s;
+
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.reveal3dVisible {
+  opacity: 1;
+
+  transform: translateY(0) rotateX(0deg);
+}
+
+.reveal3dHidden {
+  opacity: 0;
+
+  transform: translateY(100%) rotateX(-66deg);
+}
+
+/* Banner positioning */
+.bannerContainer {
+  position: absolute;
+  top: -2.25rem;
+
+  width: 20.563rem;
+}
+
+.bannerBackground {
+  position: relative;
+
+  padding-bottom: 49.236%;
+}
+
+/* Default Lottie animation */
+.backgroundAnimation {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backgroundAnimation svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Masked video */
+.bannerVideo {
+  position: absolute;
+  inset: 0;
+
+  display: none;
+  overflow: hidden;
+
+  opacity: 0;
+
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bannerVideo > * {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+}
+
+.bannerVideo video {
+  width: 100%;
+  height: 100%;
+
+  background-color: #181818;
+
+  object-fit: cover;
+}
+
+/* Cloned white title shown through mask */
+.headingClone {
+  position: absolute;
+  top: 2.25rem;
+
+  width: 100%;
+
+  color: #ffffff;
+
+  opacity: 1;
+  mix-blend-mode: soft-light;
+
+  pointer-events: none;
+}
+
+/* Quote */
+.quote {
+  margin-top: 3.625rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-bottom: 0.5rem;
+
+  white-space: pre-line;
+  text-align: center;
+
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.description {
+  font-weight: 500;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .wrapper {
+    padding-bottom: 3rem;
+  }
+
+  .container {
+    padding-top: 8.438rem;
+  }
+
+  .heading {
+    font-size: 7rem;
+    line-height: 7.5rem;
+  }
+
+  .bannerContainer {
+    top: -3.438rem;
+
+    width: 29.375rem;
+  }
+
+  .headingClone {
+    top: 3.438rem;
+  }
+
+  .quote {
+    margin-top: 5.5rem;
+
+    padding-bottom: 2rem;
+
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+/* Laptop */
+@media (min-width: 1024px) {
+  .wrapper {
+    padding-bottom: 3.5rem;
+  }
+
+  .heading {
+    font-size: 10.5rem;
+    line-height: 11.625rem;
+  }
+
+  .bannerVideo {
+    display: grid;
+    place-items: center;
+  }
+
+  .quote {
+    max-width: 40.125rem;
+
+    padding-bottom: 1.625rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1280px) {
+  .wrapper {
+    padding-bottom: 4.5rem;
+  }
+
+  .container {
+    padding-top: 9.5rem;
+  }
+
+  .heading {
+    font-size: 16rem;
+    line-height: 17rem;
+  }
+
+  .bannerContainer {
+    top: -6.5rem;
+
+    width: 65.5rem;
+  }
+
+  .headingClone {
+    top: 6.5rem;
+  }
+
+  .quote {
+    max-width: 35.75rem;
+
+    margin-top: 11.25rem;
+
+    padding-bottom: 3.75rem;
+
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  /**
+   * Original desktop interaction:
+   * - Hide default animated background
+   * - Reveal masked video
+   */
+  .heading:hover .bannerVideo {
+    opacity: 1;
+  }
+
+  .heading:hover .backgroundAnimation {
+    opacity: 0;
+  }
+}
+
+/* Very wide desktop */
+@media (min-width: 1920px) {
+  .quote {
+    max-width: 48rem;
+  }
+}

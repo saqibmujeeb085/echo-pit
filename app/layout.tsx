@@ -1,15 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/layout/Header";
+import SmoothScroll from "@/components/SmoothScroll";
+import localFont from "next/font/local";
+import Footer from "@/components/layout/Footer";
+import CustomCursor from "@/components/CustomCursor";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const pit = localFont({
+  src: [
+    {
+      path: "../assets/fonts/Pit/Pit-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/Pit/Pit-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/Pit/Pit-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-pit",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -23,11 +39,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${pit.variable} h-full antialiased`}>
+      <SmoothScroll>
+        <body className="">
+          <CustomCursor />
+          <Header />
+          <main>{children}</main>
+        </body>
+      </SmoothScroll>
     </html>
   );
 }
